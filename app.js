@@ -3,25 +3,41 @@ function getRandomValue(max, min) {
  }
 
 const app = Vue.createApp({
-    data() {
-        return {
-            playerHealth: 100,
-            monsterHealth: 100
-        };
+  data() {
+    return {
+      playerHealth: 100,
+      monsterHealth: 100,
+      counterRound: 0
+    };
+  },
+  computed: {
+    playerHealthBar() {
+      return { width: this.playerHealth + "%" };
     },
-    methods: {
-        attackMonster(){
-            let attackStrength = getRandomValue(13, 5);
-            this.monsterHealth -= attackStrength;
-            console.log(attackStrength);
-            this.attackPlayer();
-        },
-        attackPlayer(){
-            let monsterAttackStrength = getRandomValue(15, 7);
-            this.playerHealth -= monsterAttackStrength;
-            console.log(monsterAttackStrength);
-        }
+    monsterHealthBar() {
+      return { width: this.monsterHealth + "%" };
     },
+  },
+  methods: {
+    attackMonster() {
+        this.counterRound++;
+      let attackStrength = getRandomValue(5, 12);
+      this.monsterHealth -= attackStrength;
+      console.log(attackStrength);
+      this.attackPlayer();
+    },
+    attackPlayer() {
+      let monsterAttackStrength = getRandomValue(8, 5);
+      this.playerHealth -= monsterAttackStrength;
+      console.log(monsterAttackStrength);
+    },
+    specialAttackMonster() {
+        this.counterRound++;
+      let attackStrength = getRandomValue(10, 25);
+      this.monsterHealth -= attackStrength;
+      this.attackPlayer();
+    },
+  },
 });
 
 app.mount("#game");

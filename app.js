@@ -12,11 +12,13 @@ const app = Vue.createApp({
     methods: {
         attackMonster(){
             let attackStrength = getRandomValue(13, 5);
+            this.monsterHealth -= attackStrength;
             console.log(attackStrength);
             this.attackPlayer();
         },
         attackPlayer(){
             let monsterAttackStrength = getRandomValue(15, 7);
+            this.playerHealth -= monsterAttackStrength;
             console.log(monsterAttackStrength);
         }
     },

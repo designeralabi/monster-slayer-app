@@ -23,13 +23,11 @@ const app = Vue.createApp({
         this.counterRound++;
       let attackStrength = getRandomValue(5, 12);
       this.monsterHealth -= attackStrength;
-      console.log(attackStrength);
       this.attackPlayer();
     },
     attackPlayer() {
       let monsterAttackStrength = getRandomValue(8, 5);
       this.playerHealth -= monsterAttackStrength;
-      console.log(monsterAttackStrength);
     },
     specialAttackMonster() {
         this.counterRound++;

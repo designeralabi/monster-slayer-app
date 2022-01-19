@@ -54,6 +54,19 @@
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
+        <ul>
+          <li v-for="battleLog in battleLogs">
+            <span :class="{'log--player': battleLog.actionBy === 'player', 'log--monster' : battleLog.actionBy === 'monster' }">
+              
+              {{battleLog.actionBy === 'player' ? 'Player' : ' Monster '}}</span>
+            <span v-if="battleLog.actionType === 'healing' ">
+              heals health by <span class="log--heal">{{battleLog.actionValue}}</span>
+            </span>
+            <span v-else>
+              attacks and deals <span class="log--damage">{{ battleLog.actionValue}}</span> 
+            </span>
+          </li>
+        </ul>
       </section>
     </div>
   </body>

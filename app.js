@@ -8,7 +8,8 @@ const app = Vue.createApp({
       playerHealth: 100,
       monsterHealth: 100,
       counterRound: 0,
-      winner: null
+      winner: null,
+      battleLog: []
     };
   },
   watch: {
